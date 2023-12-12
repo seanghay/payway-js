@@ -1,0 +1,19 @@
+{
+  "name": "payway",
+  "description": "An unofficial client for ABA Payway",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "seanghay/payway-js",
+  "author": {
+    "email": "seanghay.dev@gmail.com",
+    "name": "Seanghay Yath",
+    "url": "https://github.com/seanghay"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0"
+  }
+}

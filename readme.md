@@ -39,10 +39,21 @@ const data = await client.check_transaction({
 ### 3. List Transactions
 
 ```javascript
-const data = await client.check_transaction({
+const data = await client.list_transaction({
   status: "PENDING"
 });
 ```
+
+## Supported Features
+
+- [x] Create Transaction
+- [x] Check Transaction
+- [x] List Transactions
+- [ ] Refund Transaction
+- [ ] Pre-Authorization
+- [ ] Account-On-File (AOF)
+- [ ] Card-On-File (COF)
+- [ ] Create Payment Link
 
 --- 
 

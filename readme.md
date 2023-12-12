@@ -33,9 +33,7 @@ const data = await client.create_transaction({
 ### 2. Check Transaction
 
 ```javascript
-const data = await client.check_transaction({
-  tran_id: "example_01",
-});
+const data = await client.check_transaction("example_01");
 ```
 
 ### 3. List Transactions

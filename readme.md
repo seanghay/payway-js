@@ -1,5 +1,7 @@
 ## (Unofficial) Node.js Client for ABA PayWay
 
+The implementation is based on https://www.payway.com.kh/developers/
+
 ```shell
 npm install payway
 ```

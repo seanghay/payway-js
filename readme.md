@@ -1,4 +1,4 @@
-## Node.js Client for ABA PayWay
+## (Unofficial) Node.js Client for ABA PayWay
 
 ```shell
 npm install payway

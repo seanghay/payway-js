@@ -26,7 +26,7 @@ export declare class PayWayClient {
 
   public check_transaction(tran_id: string): Promise<any>;
 
-  public transaction_list(args: Partial<{
+  public transaction_list(args?: Partial<{
     from_date: string,
     to_date: string,
     from_amount: string | number,

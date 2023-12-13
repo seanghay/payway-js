@@ -1,15 +1,12 @@
 const format = require("date-fns/format");
 const { createHmac } = require('node:crypto');
 const axios = require('axios').default;
+const { FormData } = require("formdata-node")
 
 class PayWayClient {
-
-  /**
-   * @param {string} baseURL 
-   * @param {string} merchantId 
-   * @param {string} apiKey 
-   */
+  
   constructor(base_url, merchant_id, api_key) {
+    this.base_url = base_url;
     this.merchant_id = merchant_id;
     this.api_key = api_key;
     this._client = axios.create({
@@ -20,6 +17,7 @@ class PayWayClient {
 
   /**
    * @param {string[]} values 
+   * @returns {string}
    */
   create_hash(values) {
     const data = values.join("")

@@ -1,7 +1,7 @@
 {
   "name": "payway",
   "description": "An unofficial client for ABA PayWay",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "index.js",
   "repository": "seanghay/payway-js",
   "author": {
@@ -10,7 +10,8 @@
     "url": "https://github.com/seanghay"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "dependencies": {
     "axios": "^1.6.2",

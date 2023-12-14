@@ -1,18 +1,23 @@
 const format = require("date-fns/format");
 const { createHmac } = require('node:crypto');
 const axios = require('axios').default;
-const { FormData } = require("formdata-node")
+const { FormData } = require("formdata-node");
 
 class PayWayClient {
-  
-  constructor(base_url, merchant_id, api_key) {
+
+  constructor(base_url, merchant_id, api_key, client_factory) {
     this.base_url = base_url;
     this.merchant_id = merchant_id;
     this.api_key = api_key;
-    this._client = axios.create({
-      baseURL: base_url,
-      headers: { "Content-Type": "multipart/form-data" }
-    });
+
+    if (typeof client_factory === 'function') {
+      this._client = client_factory(this);
+    } else {
+      this._client = axios.create({
+        baseURL: base_url,
+        headers: { "Content-Type": "multipart/form-data" }
+      });
+    }
   }
 
   /**
@@ -23,16 +28,20 @@ class PayWayClient {
     const data = values.join("")
     return createHmac("sha512", this.api_key)
       .update(data)
-      .digest('base64')
+      .digest('base64');
   }
 
-  create_payload(body = {}) {
-    body = Object.fromEntries(Object.entries(body).filter(([k, v]) => v != null));
-    const date = new Date();
+  create_payload(body = {}, date = new Date()) {
+    body = Object.fromEntries(
+      Object.entries(body)
+        .filter(([k, v]) => v != null)
+    );
+
     const req_time = format(date, 'yyyyMMddHHmmss');
     const merchant_id = this.merchant_id;
     const formData = new FormData();
     const entries = Object.entries(body);
+
     const hash = this.create_hash([
       req_time,
       merchant_id,
@@ -56,10 +65,20 @@ class PayWayClient {
     amount,
     currency,
     return_url,
+    return_deeplink,
+    pwt,
+    firstname,
+    lastname,
+    email,
+    phone
   } = {}) {
 
     if (typeof return_url === 'string') {
       return_url = Buffer.from(return_url).toString('base64');
+    }
+
+    if (typeof return_deeplink === 'string') {
+      return_deeplink = Buffer.from(return_deeplink).toString("base64");
     }
 
     const response = await this._client.post(
@@ -68,8 +87,14 @@ class PayWayClient {
       this.create_payload({
         tran_id,
         amount,
+        pwt,
+        firstname,
+        lastname,
+        email,
+        phone,
         payment_option,
         return_url,
+        return_deeplink,
         currency,
       })
     );
@@ -78,7 +103,8 @@ class PayWayClient {
   }
 
   async check_transaction(tran_id) {
-    const response = await this._client.post("/api/payment-gateway/v1/payments/check-transaction",
+    const response = await this._client.post(
+      "/api/payment-gateway/v1/payments/check-transaction",
       // order matters here
       this.create_payload({ tran_id })
     );
@@ -92,7 +118,8 @@ class PayWayClient {
     to_amount,
     status
   } = {}) {
-    const response = await this._client.post("/api/payment-gateway/v1/payments/transaction-list",
+    const response = await this._client.post(
+      "/api/payment-gateway/v1/payments/transaction-list",
       this.create_payload({
         from_date,
         to_date,

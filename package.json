@@ -9,6 +9,9 @@
     "name": "Seanghay Yath",
     "url": "https://github.com/seanghay"
   },
+  "scripts": {
+    "test": "ava"
+  },
   "files": [
     "index.js",
     "index.d.ts"
@@ -17,5 +20,8 @@
     "axios": "^1.6.2",
     "date-fns": "^2.30.0",
     "formdata-node": "^6.0.3"
+  },
+  "devDependencies": {
+    "ava": "^6.0.1"
   }
 }

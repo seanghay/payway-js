@@ -2,6 +2,8 @@
 
 The implementation is based on https://www.payway.com.kh/developers/
 
+[![test](https://github.com/seanghay/payway-js/actions/workflows/node-test.yml/badge.svg)](https://github.com/seanghay/payway-js/actions/workflows/node-test.yml)
+
 ```shell
 npm install payway
 ```

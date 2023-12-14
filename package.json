@@ -4,6 +4,7 @@
   "version": "0.0.5",
   "main": "index.js",
   "repository": "seanghay/payway-js",
+  "keywords": ["abapay", "payway", "ababank", "abapayway"],
   "author": {
     "email": "seanghay.dev@gmail.com",
     "name": "Seanghay Yath",

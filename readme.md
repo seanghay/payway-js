@@ -4,6 +4,9 @@ The implementation is based on https://www.payway.com.kh/developers/
 
 [![test](https://github.com/seanghay/payway-js/actions/workflows/node-test.yml/badge.svg)](https://github.com/seanghay/payway-js/actions/workflows/node-test.yml)
 
+> [!WARNING]  
+> This is not a product of ABA Bank.
+
 ```shell
 npm install payway
 ```

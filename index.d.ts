@@ -28,7 +28,7 @@ export declare class PayWayClient {
     base_url: string,
     merchant_id: string,
     api_key: string,
-    client_factory: (thisRef: PayWayClient) => any,
+    client_factory?: (thisRef: PayWayClient) => any,
   );
 
   public create_hash(values: string[]): string;

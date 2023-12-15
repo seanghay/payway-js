@@ -27,7 +27,7 @@ const client = new PayWayClient(
 
 ```javascript
 const data = await client.create_transaction({
-  tran_id: "example_01",
+  tran_id: "example-01",
   payment_option: "abapay_deeplink",
   amount: 1,
   currency: "USD",
@@ -38,7 +38,7 @@ const data = await client.create_transaction({
 ### 2. Check Transaction
 
 ```javascript
-const data = await client.check_transaction("example_01");
+const data = await client.check_transaction("example-01");
 ```
 
 ### 3. List Transactions

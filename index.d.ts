@@ -13,6 +13,7 @@ export declare type PaymentOption =
   | "cards"
   | "abapay"
   | "abapay_deeplink"
+  | "abapay_khqr_deeplink"
   | "wechat"
   | "alipay"
   | "bakong"
@@ -40,7 +41,8 @@ export declare class PayWayClient {
     payment_option: PaymentOption,
     amount: number | string,
     currency: "USD" | "KHR",
-    return_deeplink: string,
+    return_deeplink: string | { android_scheme: string, ios_scheme: string },
+    continue_success_url: string,
     return_url: string,
     pwt: string,
     firstname: string,

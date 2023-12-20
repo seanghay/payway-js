@@ -66,6 +66,7 @@ class PayWayClient {
     currency,
     return_url,
     return_deeplink,
+    continue_success_url,
     pwt,
     firstname,
     lastname,
@@ -73,13 +74,14 @@ class PayWayClient {
     phone
   } = {}) {
 
-    if (typeof return_url === 'string') {
-      return_url = Buffer.from(return_url).toString('base64');
+    function base64(d) {
+      return Buffer.from(d).toString('base64');
     }
 
-    if (typeof return_deeplink === 'string') {
-      return_deeplink = Buffer.from(return_deeplink).toString("base64");
-    }
+    if (typeof return_url === 'string') return_url = base64(return_url);
+    if (typeof return_deeplink === 'string') return_deeplink = base64(return_deeplink);
+    if (typeof return_deeplink === 'object' && return_deeplink != null) return_deeplink = base64(JSON.stringify(return_deeplink));
+    if (typeof continue_success_url === 'string') continue_success_url = base64(continue_success_url);
 
     const response = await this._client.post(
       "/api/payment-gateway/v1/payments/purchase",
@@ -94,6 +96,7 @@ class PayWayClient {
         phone,
         payment_option,
         return_url,
+        continue_success_url,
         return_deeplink,
         currency,
       })

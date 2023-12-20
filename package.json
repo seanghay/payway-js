@@ -1,7 +1,7 @@
 {
   "name": "payway",
   "description": "An unofficial client for ABA PayWay",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "main": "index.js",
   "repository": "seanghay/payway-js",
   "keywords": ["abapay", "payway", "ababank", "abapayway"],

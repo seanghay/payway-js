@@ -1,10 +1,15 @@
 {
   "name": "payway",
   "description": "An unofficial client for ABA PayWay",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "index.js",
   "repository": "seanghay/payway-js",
-  "keywords": ["abapay", "payway", "ababank", "abapayway"],
+  "keywords": [
+    "abapay",
+    "payway",
+    "ababank",
+    "abapayway"
+  ],
   "author": {
     "email": "seanghay.dev@gmail.com",
     "name": "Seanghay Yath",
@@ -20,7 +25,7 @@
   "dependencies": {
     "axios": "^1.6.2",
     "date-fns": "^2.30.0",
-    "formdata-node": "^6.0.3"
+    "formdata-node": "^4.4.1"
   },
   "devDependencies": {
     "ava": "^6.0.1"

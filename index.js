@@ -81,8 +81,7 @@ class PayWayClient {
     if (typeof return_url === 'string') return_url = base64(return_url);
     if (typeof return_deeplink === 'string') return_deeplink = base64(return_deeplink);
     if (typeof return_deeplink === 'object' && return_deeplink != null) return_deeplink = base64(JSON.stringify(return_deeplink));
-    if (typeof continue_success_url === 'string') continue_success_url = base64(continue_success_url);
-
+    
     const response = await this._client.post(
       "/api/payment-gateway/v1/payments/purchase",
       // order matters here

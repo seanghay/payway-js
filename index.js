@@ -3,6 +3,11 @@ const { createHmac } = require('node:crypto');
 const axios = require('axios').default;
 const { FormData } = require("formdata-node");
 
+exports.trim = function trim(value) {
+  if (typeof value === 'string') return value.trim()
+  return value
+}
+
 class PayWayClient {
 
   constructor(base_url, merchant_id, api_key, client_factory) {
@@ -81,7 +86,7 @@ class PayWayClient {
     if (typeof return_url === 'string') return_url = base64(return_url);
     if (typeof return_deeplink === 'string') return_deeplink = base64(return_deeplink);
     if (typeof return_deeplink === 'object' && return_deeplink != null) return_deeplink = base64(JSON.stringify(return_deeplink));
-    
+
     const response = await this._client.post(
       "/api/payment-gateway/v1/payments/purchase",
       // order matters here
@@ -89,10 +94,10 @@ class PayWayClient {
         tran_id,
         amount,
         pwt,
-        firstname,
-        lastname,
-        email,
-        phone,
+        firstname: trim(firstname),
+        lastname: trim(lastname),
+        email: trim(email),
+        phone: trim(phone),
         payment_option,
         return_url,
         continue_success_url,

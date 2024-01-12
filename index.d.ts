@@ -1,5 +1,7 @@
 import type { FormData } from 'formdata-node';
 
+export declare function trim<T = string | null | undefined>(value: T): T
+
 export declare type TransactionStatus =
   | "APPROVED"
   | "DECLINED"

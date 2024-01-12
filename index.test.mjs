@@ -1,5 +1,14 @@
 import test from 'ava'
-import { PayWayClient } from './index.js'
+import { PayWayClient, trim } from './index.js'
+
+test("should trim", t => {
+  t.is(trim("abc "), "abc")
+  t.is(trim(" abc "), "abc")
+  t.is(trim(), undefined)
+  t.is(trim(null), null)
+  t.is(trim(1), 1)
+  t.is(trim(NaN), NaN)
+})
 
 test("should hash", t => {
   const client = new PayWayClient("http://example.com", "1", "1");
